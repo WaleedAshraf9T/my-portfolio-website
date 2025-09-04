@@ -28,7 +28,7 @@ export default function Navbar() {
       </div>
 
       {/* Navigation Items */}
-      <div ref={scrollRef} className="w-[45%] flex overflow-hidden rounded-full mr-3 scroll-smooth">
+      <div ref={scrollRef} className="w-[45%] flex overflow-hidden rounded-full mr-3">
         {navItems.map((item, index) => (
           <a href="#" key={index} className="flex-shrink-0 select-none mr-3">
             <div className="group h-22 w-max bg-[var(--primary)]/5 hover:bg-[var(--black)] transition-all rounded-full flex items-center justify-center text-2xl text-[var(--black)] hover:text-[var(--primary)] px-8 border-1 border-black/10 backdrop-blur-md">

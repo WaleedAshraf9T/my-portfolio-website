@@ -10,7 +10,7 @@ export default function ProfileSwitcher() {
 
     return (
         <div className="fixed top-5 w-full flex items-center justify-center">
-            <div className="w-[25%] h-18 bg-[var(--primary)]/5 backdrop-blur-md border-1 border-black/10 rounded-full relative text-2xl text-[var(--black)]">
+            <div className="w-[23%] h-18 bg-[var(--primary)]/5 backdrop-blur-md border-1 border-black/10 rounded-full relative text-2xl text-[var(--black)]">
                 {/* sliding indicator */}
                 <div
                     aria-hidden="true"
@@ -27,7 +27,7 @@ export default function ProfileSwitcher() {
                         className={`w-1/2 h-full rounded-full flex items-center justify-center font-thin text-xl transition-colors duration-200 cursor-pointer ${active === 0 ? "text-[var(--primary)]" : "text-[var(--black)]"
                             }`}
                     >
-                        Development
+                        Developer
                     </button>
 
                     <button
