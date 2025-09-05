@@ -31,6 +31,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.11/dist/lenis.css"></link>
+        <script src="https://unpkg.com/lenis@1.3.11/dist/lenis.min.js"></script> 
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${orbit.variable} antialiased`}
       >
