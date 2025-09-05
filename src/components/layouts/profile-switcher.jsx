@@ -9,8 +9,8 @@ export default function ProfileSwitcher() {
     };
 
     return (
-        <div className="fixed top-5 w-full flex items-center justify-center">
-            <div className="w-[23%] h-18 bg-[var(--primary)]/5 backdrop-blur-md border-1 border-black/10 rounded-full relative text-2xl text-[var(--black)]">
+        <div className="fixed top-5 w-full flex items-center justify-center z-50">
+            <div className="w-[23%] h-18 bg-[var(--primary)]/5 backdrop-blur-md border-1 border-black/10 rounded-full relative text-2xl text-[var(--black)] p-3">
                 {/* sliding indicator */}
                 <div
                     aria-hidden="true"

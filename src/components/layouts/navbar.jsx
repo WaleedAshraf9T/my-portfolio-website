@@ -6,7 +6,7 @@ export default function Navbar() {
   const scrollRef = useHorizontalScroll();
   // Navigation items
   const navItems = [
-    { link: "#", text: "About Me" },
+    { link: "#about", text: "About Me" },
     { link: "#", text: "What I Do" },
     { link: "#", text: "Skills" },
     { link: "#", text: "Experiences" },
@@ -15,9 +15,9 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed bottom-5 w-screen flex items-center justify-center">
+    <nav className="fixed bottom-5 w-screen flex items-center justify-center z-50">
       {/* Scroll Indicator */}
-      <div className="group w-24 h-24 bg-[var(--black)] hover:bg-[var(--primary)] transition-all hover:border-1 hover:border-[var(--black)] rounded-full flex items-center justify-center mr-3">
+      <a href="#"><div className="group w-24 h-24 bg-[var(--black)] hover:bg-[var(--primary)] transition-all hover:border-1 hover:border-[var(--black)] rounded-full flex items-center justify-center mr-3">
         <Image
           src={"/arrow.svg"}
           width={35}
@@ -25,12 +25,12 @@ export default function Navbar() {
           alt="scroll indicator arrow vector graphic"
           className="group-hover:invert"
         />
-      </div>
+      </div></a>
 
       {/* Navigation Items */}
       <div ref={scrollRef} className="w-[45%] flex overflow-hidden rounded-full mr-3">
         {navItems.map((item, index) => (
-          <a href="#" key={index} className="flex-shrink-0 select-none mr-3">
+          <a href={item.link} key={index} className="flex-shrink-0 select-none mr-3">
             <div className="group h-22 w-max bg-[var(--primary)]/5 hover:bg-[var(--black)] transition-all rounded-full flex items-center justify-center text-2xl text-[var(--black)] hover:text-[var(--primary)] px-8 border-1 border-black/10 backdrop-blur-md">
               {item.text}
             </div>

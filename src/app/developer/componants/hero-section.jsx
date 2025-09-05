@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-export default function HeroSection() {
+export default function DeveloperHeroSection() {
     const titles = ["AI/ML Engineer", "Software Developer", "Workflow Automator"];
     const [index, setIndex] = useState(0);
     const [displayText, setDisplayText] = useState("");
@@ -61,7 +61,7 @@ export default function HeroSection() {
     }
 
     return (
-        <section className="w-full h-screen flex flex-col justify-center px-28 border-b-2">
+        <section id="home" className="w-full h-screen flex flex-col justify-center px-28 border-b-2">
             <h2 className="text-3xl">
                 Hey! It's <strong className="font-medium">Waleed Ashraf</strong>, {index === 0 ? "an" : "a"}
             </h2>
