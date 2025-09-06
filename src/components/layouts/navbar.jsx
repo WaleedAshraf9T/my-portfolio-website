@@ -8,24 +8,27 @@ export default function Navbar() {
   const navItems = [
     { link: "#about", text: "About Me" },
     { link: "#what-i-do", text: "What I Do" },
-    { link: "#", text: "Skills" },
+    { link: "#skills", text: "Skills" },
     { link: "#", text: "Experiences" },
     { link: "#", text: "Portfolio" },
     { link: "#", text: "Testimonials" },
   ];
 
   return (
-    <nav className="fixed bottom-5 w-screen flex items-center justify-center z-50">
+    <nav className="hidden md:flex fixed bottom-5 w-screen  items-center justify-center z-50">
       {/* Scroll Indicator */}
-      <a href="#"><div className="group w-24 h-24 bg-[var(--black)] hover:bg-[var(--primary)] transition-all hover:border-1 hover:border-[var(--black)] rounded-full flex items-center justify-center mr-3">
-        <Image
-          src={"/arrow.svg"}
-          width={35}
-          height={0}
-          alt="scroll indicator arrow vector graphic"
-          className="group-hover:invert"
-        />
-      </div></a>
+      <a href="#">
+        <div 
+        className="group w-24 h-24 bg-[var(--black)] hover:bg-[var(--primary)] transition-all hover:border-1 hover:border-[var(--black)] rounded-full flex items-center justify-center mr-3">
+          <Image
+            src={"/arrow.svg"}
+            width={35}
+            height={0}
+            alt="scroll indicator arrow vector graphic"
+            className="group-hover:invert"
+          />
+        </div>
+      </a>
 
       {/* Navigation Items */}
       <div ref={scrollRef} className="w-[45%] flex overflow-hidden rounded-full mr-3">

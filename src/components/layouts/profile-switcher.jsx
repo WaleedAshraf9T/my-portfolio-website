@@ -1,16 +1,23 @@
 'use client'
 import { useState } from "react";
+import { useRouter } from 'next/navigation';
 
 export default function ProfileSwitcher() {
+    const profileRoutes = ["/developer", "/designer"];
+    const router = useRouter();
     const [active, setActive] = useState(0); // 0 = Development, 1 = Designer
+
+    const handleNavigation = (index) => {
+        router.push(profileRoutes[index]);
+    };
 
     const toggle = (index) => {
         setActive(index);
     };
 
     return (
-        <div className="fixed top-5 w-full flex items-center justify-center z-50">
-            <div className="w-[23%] h-18 bg-[var(--primary)]/5 backdrop-blur-md border-1 border-black/10 rounded-full relative text-2xl text-[var(--black)] p-3">
+        <div className="fixed top-5 w-full hidden md:flex  items-center justify-center z-50">
+            <div className="w-[23%] h-18 bg-[var(--primary)]/5 backdrop-blur-md border-1 border-black/10 rounded-full relative text-2xl text-[var(--black)]">
                 {/* sliding indicator */}
                 <div
                     aria-hidden="true"
@@ -21,7 +28,7 @@ export default function ProfileSwitcher() {
                 <div className="relative z-10 flex h-full">
                     <button
                         type="button"
-                        onClick={() => toggle(0)}
+                        onClick={() => { toggle(0); handleNavigation(0); }}
                         onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && toggle(0)}
                         aria-pressed={active === 0}
                         className={`w-1/2 h-full rounded-full flex items-center justify-center font-thin text-xl transition-colors duration-200 cursor-pointer ${active === 0 ? "text-[var(--primary)]" : "text-[var(--black)]"
@@ -32,7 +39,7 @@ export default function ProfileSwitcher() {
 
                     <button
                         type="button"
-                        onClick={() => toggle(1)}
+                        onClick={() => { toggle(1); handleNavigation(1); }}
                         onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && toggle(1)}
                         aria-pressed={active === 1}
                         className={`w-1/2 h-full rounded-full flex items-center justify-center font-thin text-xl transition-colors duration-200  cursor-pointer ${active === 1 ? "text-[var(--primary)]" : "text-[var(--black)]"

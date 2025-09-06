@@ -83,12 +83,12 @@ export default function DeveloperHeroSection() {
                 </div>
 
                 <div className="flex gap-5">
+                    <a href="https://www.linkedin.com/in/waleedashraf9t/" target="_bl" className="flex items-center gap-2.5">
+                        <Image src={'/linkedin.svg'} width={30} height={0} alt="github" /> LinkedIn
+                    </a>
                     <a href="#" className="flex items-center gap-2.5">
-                    <Image src={'/github.svg'} width={30} height={0} alt="github" /> Github
-                </a>
-                    <a href="https://www.linkedin.com/in/waleedashraf9t/" target="_blank" className="flex items-center gap-2.5">
-                    <Image src={'/linkedin.svg'} width={30} height={0} alt="github" /> LinkedIn
-                </a>
+                        <Image src={'/github.svg'} width={30} height={0} alt="github" /> Github
+                    </a>
                 </div>
             </div>
         </section>

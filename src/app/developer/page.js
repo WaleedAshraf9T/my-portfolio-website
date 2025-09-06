@@ -4,6 +4,7 @@ import DeveloperHeroSection from "./componants/hero-section";
 import DeveloperAbout from "./componants/about";
 import ProfileSwitcher from "@/components/layouts/profile-switcher";
 import DeveloperWhatIDo from "./componants/what-i-do";
+import DeveloperSkills from "./componants/skills";
 import Lenis from '@studio-freight/lenis'
 
 export default function Developer() {
@@ -33,6 +34,7 @@ export default function Developer() {
       <DeveloperHeroSection />
       <DeveloperAbout />
       <DeveloperWhatIDo />
+      <DeveloperSkills />
       <Navbar />
     </main>
   );

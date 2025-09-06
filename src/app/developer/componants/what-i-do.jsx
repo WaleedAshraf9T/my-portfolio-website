@@ -5,32 +5,32 @@ export default function DeveloperWhatIDo() {
     const whatIDoData = [
         {
             title: "AI/ML Engineer",
-            description: "I develop and deploy machine learning models, specializing in deep learning and computer vision to create intelligent applications that solve real-world problems.",
+            description: "Expert AI/ML engineer creating cutting-edge machine learning models, deep learning solutions, and computer vision systems for intelligent business applications.",
             icon: "/ai-ml-icon.png"
         },
         {
             title: "Workflows Automation",
-            description: "Designing and implementing automation systems that streamline repetitive tasks, reduce errors, and boost productivity.",
+            description: "Custom workflow automation solutions that eliminate manual processes, minimize human errors, and maximize operational efficiency for businesses.",
             icon: "/automation-icon.png"
         },
         {
             title: "Web App Development",
-            description: "Building responsive, secure, and scalable web applications with modern frameworks and clean user experiences.",
+            description: "Full-stack web application development using modern JavaScript frameworks, ensuring responsive design, robust security, and optimal performance.",
             icon: "/web-dev-icon.png"
         },
         {
             title: "Mobile App Development",
-            description: "Native and cross-platform mobile applications with intuitive UI/UX design, real-time features, and seamless user experiences for iOS and Android platforms.",
+            description: "Professional iOS and Android app development with React Native and Flutter, delivering exceptional user experiences and cross-platform compatibility.",
             icon: "/mobile-dev-icon.png"
         },
         {
             title: "Deep Learning Apps",
-            description: "Developing intelligent systems powered by neural networks for tasks like image recognition, medical imaging, and natural language processing.",
+            description: "Advanced neural network applications for image recognition, natural language processing, predictive analytics, and AI-powered business intelligence solutions.",
             icon: "/dl-icon.png"
         }
     ];
     return (
-        <section id="what-i-do" className="w-full min-h-screen flex flex-col mt-[5%] px-28 border-b-2">
+        <section id="what-i-do" className="w-full h-[100vh] pb-[7vh] flex flex-col justify-center  px-28 border-b-2">
             <div className="flex items-center gap-3 text-xl mb-10">
                 <div className="w-3 h-3 bg-[var(--black)] rounded-full"></div> What I Do
             </div>
