@@ -65,7 +65,7 @@ export default function DeveloperSkills() {
     ];
 
     return (
-        <section id="skills" className="w-full h-auto flex flex-col justify-center px-5 md:px-28 border-b-2 pt-20 md:pb-[17vh] overflow-hidden">
+        <section id="skills" className="w-full h-auto flex flex-col justify-center px-5 md:px-28 border-b-2 pt-24 md:pt-20 pb-24 md:pb-[17vh] overflow-hidden">
             <div className="flex items-center gap-3 text-xl mb-10">
                 <div className="w-3 h-3 bg-[var(--black)] rounded-full"></div> My Skills
             </div>
@@ -77,4 +77,4 @@ export default function DeveloperSkills() {
             ))}
         </section>
     );
-}   
+}

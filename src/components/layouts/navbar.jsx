@@ -117,7 +117,7 @@ export default function Navbar() {
 
         {/* Mobile expanded panel (fills screen) */}
         {mobileOpen && (
-          <div className={`fixed z-40 gap-2.5 flex flex-col md:hidden left-5 right-5 top-5 transform transition-all duration-300 ease-in-out ${isAnimating ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
+          <div className={`fixed z-40 gap-2.5 flex flex-col backdrop-blur-sm md:hidden left-0 right-0 p-5 top-0 bottom-0 transform transition-all duration-700 ease-in-out ${isAnimating ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
             } ${mobileOpen && !isAnimating ? 'animate-fadeIn' : ''}`}>
             {navItems.map((item, index) => (
               <a
@@ -138,8 +138,8 @@ export default function Navbar() {
                 }}
                 onClick={handleNavClick}
               >
-                <div className="w-full h-24 bg-[var(--primary)]/5 border-1 border-black/10 backdrop-blur-md rounded-full flex items-center justify-center text-3xl">
-                  <p className="mix-blend-exclusion">{item.text.toUpperCase()}</p>
+                <div className="w-full h-24 bg-[var(--black)] rounded-full flex items-center justify-center text-3xl text-[var(--primary)]">
+                  {item.text.toUpperCase()}
                 </div>
               </a>
             ))}
