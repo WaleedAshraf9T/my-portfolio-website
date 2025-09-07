@@ -30,12 +30,12 @@ export default function DeveloperWhatIDo() {
         }
     ];
     return (
-        <section id="what-i-do" className="w-full md:h-screen md:pb-[7vh] py-24 md:py-0 flex flex-col justify-center px-5 md:px-28 border-b-2">
+        <section id="what-i-do" className="w-full h-auto lg:py-[12vh] py-24 flex flex-col justify-center px-5 md:px-16 lg:px-28 border-b-2">
             <div className="flex items-center gap-3 text-xl mb-10">
                 <div className="w-3 h-3 bg-[var(--black)] rounded-full"></div> What I Do
             </div>
 
-            <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {whatIDoData.map((item, index) => (
                     <WhatIDoCard key={index} title={item.title} icon={item.icon} description={item.description} />
                 ))}
@@ -47,7 +47,7 @@ export default function DeveloperWhatIDo() {
                     </div>
 
                     <a href="#">
-                        <button className="group w-full md:w-[70%] h-16 bg-[var(--black)] rounded-full hover:bg-[var(--primary)] border-1 border-[var(--black)] transition-all duration-300 cursor-pointer flex items-center justify-center gap-2.5">
+                        <button className="group w-full 2xl:w-[70%] h-16 bg-[var(--black)] rounded-full hover:bg-[var(--primary)] border-1 border-[var(--black)] transition-all duration-300 cursor-pointer flex items-center justify-center gap-2.5">
                             <p className="text-[var(--primary)] text-[22px] font-light group-hover:invert">Give Me Feedback</p>
                             <Image
                                 src={"/arrow.svg"}

@@ -6,7 +6,7 @@ export default function DeveloperSkills() {
             title: "0 - Python",
             description: "Expert Python developer specializing in AI/ML development, data science, and backend systems. I leverage Python's extensive libraries to build scalable machine learning models, automate complex workflows, and create robust enterprise applications with optimal performance.",
             sticker: "/python-sticker.svg",
-            width: 120
+            width: 130
         },
         {
             title: "1 - TensorFlow & PyTorch",
@@ -65,7 +65,7 @@ export default function DeveloperSkills() {
     ];
 
     return (
-        <section id="skills" className="w-full h-auto flex flex-col justify-center px-5 md:px-28 border-b-2 pt-24 md:pt-20 pb-24 md:pb-[17vh] overflow-hidden">
+        <section id="skills" className="w-full h-auto flex flex-col justify-center px-5 md:px-16 lg:px-28 border-b-2 pt-24 md:pt-20 pb-24 lg:pb-[17vh] overflow-hidden">
             <div className="flex items-center gap-3 text-xl mb-10">
                 <div className="w-3 h-3 bg-[var(--black)] rounded-full"></div> My Skills
             </div>

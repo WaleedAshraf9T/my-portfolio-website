@@ -61,11 +61,11 @@ export default function DeveloperHeroSection() {
     }
 
     return (
-        <section id="home" className="w-full h-screen flex flex-col justify-center px-5 md:p-28 border-b-2">
+        <section id="home" className="w-full h-screen flex flex-col justify-center px-5 md:p-16 lg:px-28 border-b-2">
             <h2 className="text-xl md:text-3xl mb-1 md:mb-5">
                 Hey! It's <strong className="font-medium">Waleed Ashraf</strong>, {index === 0 ? "an" : "a"}
             </h2>
-            <h1 className="text-6xl md:text-[100px] leading-18 font-bold md:font-normal 2xl:text-9xl font-['Orbit'] mb-6 md:mb-12">
+            <h1 className="text-6xl md:text-[100px] leading-18 md:leading-tight font-bold lg:font-normal 2xl:text-9xl font-['Orbit'] mb-6 md:mb-12">
                 {displayText}
                 <span className={`ml-1 inline-block w-2 ${cursorVisible ? "bg-[var(--black)]" : "bg-transparent"}`}>&nbsp;</span>
             </h1>

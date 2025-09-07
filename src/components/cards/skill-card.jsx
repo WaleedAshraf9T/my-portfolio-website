@@ -12,7 +12,7 @@ export default function SkillCard(props) {
                 width={props.width ?? 125} 
                 height={0} 
                 alt="" 
-                className="absolute -top-8 md:-top-8 z-50 -right-5 md:-right-10 pointer-events-none md:w-auto"
+                className="absolute -top-8 md:-top-5 z-20 -right-5 md:-right-8 pointer-events-none md:w-auto"
                 style={{
                     width: `${mobileWidth}px`,
                 }}

@@ -1,12 +1,14 @@
 'use client';
 import Image from "next/image";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHorizontalScroll } from "@/hooks/useHorizontalScroll";
 
 export default function Navbar() {
   const scrollRef = useHorizontalScroll();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(false);
 
   // Navigation items
   const navItems = [
@@ -17,6 +19,58 @@ export default function Navbar() {
     { link: "#", text: "Portfolio" },
     { link: "#", text: "Testimonials" },
   ];
+
+  // Check scroll position and update arrow visibility
+  const checkArrows = () => {
+    const element = scrollRef.current;
+    if (element) {
+      const { scrollLeft, scrollWidth, clientWidth } = element;
+      
+      // Debug logging (remove in production)
+      console.log('Scroll check:', { scrollLeft, scrollWidth, clientWidth, diff: scrollWidth - clientWidth });
+      
+      // Show left arrow if we can scroll left (not at the beginning)
+      setShowLeftArrow(scrollLeft > 5); // Small threshold to account for rounding
+      
+      // Show right arrow if we can scroll right (not at the end)
+      setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 5); // Small threshold
+    }
+  };
+
+  // Scroll functions
+  const scrollLeft = () => {
+    const element = scrollRef.current;
+    if (element) {
+      element.scrollBy({ left: -200, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    const element = scrollRef.current;
+    if (element) {
+      element.scrollBy({ left: 200, behavior: 'smooth' });
+    }
+  };
+
+  // Set up scroll event listener and initial check
+  useEffect(() => {
+    const element = scrollRef.current;
+    if (element) {
+      // Initial check
+      checkArrows();
+      
+      // Add scroll event listener
+      element.addEventListener('scroll', checkArrows);
+      
+      // Check on resize
+      window.addEventListener('resize', checkArrows);
+      
+      return () => {
+        element.removeEventListener('scroll', checkArrows);
+        window.removeEventListener('resize', checkArrows);
+      };
+    }
+  }, []);
 
   const handleOpenMenu = () => {
     setMobileOpen(true);
@@ -54,6 +108,12 @@ export default function Navbar() {
         .animate-fadeIn {
           animation: fadeIn 0.3s ease-out;
         }
+        .scroll-arrow {
+          transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .scroll-arrow:hover {
+          transform: scale(1.1);
+        }
       `}</style>
 
       <nav>
@@ -71,15 +131,49 @@ export default function Navbar() {
             </div>
           </a>
 
-          {/* Navigation Items */}
-          <div ref={scrollRef} className="w-[45%] flex overflow-hidden rounded-full mr-3">
-            {navItems.map((item, index) => (
-              <a href={item.link} key={index} className="flex-shrink-0 select-none mr-3">
-                <div className="group h-22 w-max bg-[var(--primary)]/5 hover:bg-[var(--black)] transition-all rounded-full flex items-center justify-center text-2xl text-[var(--black)] hover:text-[var(--primary)] px-8 border-1 border-black/10 backdrop-blur-md">
-                  {item.text}
-                </div>
-              </a>
-            ))}
+          {/* Navigation Items with Overlay Arrows */}
+          <div className="relative w-[45%] mr-3">
+            {/* Left Arrow Overlay */}
+            {showLeftArrow && (
+              <button
+                onClick={scrollLeft}
+                className="scroll-arrow absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white/80 to-transparent backdrop-blur-sm rounded-l-full flex items-center justify-center z-10 hover:from-white/90 transition-all"
+              >
+                <Image
+                  src={"/arrow.svg"}
+                  width={20}
+                  height={0}
+                  alt="scroll left"
+                  className="rotate-90"
+                />
+              </button>
+            )}
+
+            {/* Navigation Items Container */}
+            <div ref={scrollRef} className="flex overflow-hidden rounded-full">
+              {navItems.map((item, index) => (
+                <a href={item.link} key={index} className="flex-shrink-0 select-none mr-3">
+                  <div className="group h-22 w-max bg-[var(--primary)]/5 hover:bg-[var(--black)] transition-all rounded-full flex items-center justify-center text-2xl text-[var(--black)] hover:text-[var(--primary)] px-8 border-1 border-black/10 backdrop-blur-md">
+                    {item.text}
+                  </div>
+                </a>
+              ))}
+            </div>
+
+            {/* Right Arrow Overlay */}
+            {showRightArrow && (
+              <button
+                onClick={scrollRight}
+                className="scroll-arrow absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white/80 to-transparent rounded-r-full flex items-center justify-center z-10 hover:from-white/90 transition-all"
+              >
+                <Image
+                  src={"/navigation-arrow.svg"}
+                  width={15}
+                  height={0}
+                  alt="scroll right"
+                />
+              </button>
+            )}
           </div>
 
           {/* Let's talk CTA */}

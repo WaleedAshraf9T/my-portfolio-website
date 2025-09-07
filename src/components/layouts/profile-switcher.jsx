@@ -17,7 +17,7 @@ export default function ProfileSwitcher() {
 
     return (
         <div className="fixed top-5 w-full flex items-center justify-center z-30">
-            <div className="w-[80%] h-16 md:w-[23%] md:h-18 bg-[var(--primary)]/5 backdrop-blur-md border-1 border-black/10 rounded-full relative text-2xl text-[var(--black)]">
+            <div className="w-[80%] md:w-2/4 lg:w-[23%] h-16 lg:h-18 bg-[var(--primary)]/5 backdrop-blur-md border-1 border-black/10 rounded-full relative text-2xl text-[var(--black)]">
                 {/* sliding indicator */}
                 <div
                     aria-hidden="true"
