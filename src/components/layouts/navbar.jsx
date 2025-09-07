@@ -117,13 +117,13 @@ export default function Navbar() {
 
         {/* Mobile expanded panel (fills screen) */}
         {mobileOpen && (
-          <div className={`absolute z-40 gap-2.5 flex flex-col md:hidden left-5 right-5 top-5 bottom-5 transform transition-all duration-300 ease-in-out ${isAnimating ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
+          <div className={`fixed z-40 gap-2.5 flex flex-col md:hidden left-5 right-5 top-5 transform transition-all duration-300 ease-in-out ${isAnimating ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
             } ${mobileOpen && !isAnimating ? 'animate-fadeIn' : ''}`}>
             {navItems.map((item, index) => (
               <a
                 href={item.link}
                 key={index}
-                className={`select-none mr-3 transform transition-all duration-300 ease-out ${mobileOpen && !isAnimating
+                className={`select-none transform transition-all duration-300 ease-out ${mobileOpen && !isAnimating
                   ? 'translate-x-0 opacity-100'
                   : isAnimating
                     ? '-translate-x-full opacity-0'
@@ -146,7 +146,7 @@ export default function Navbar() {
 
             <a
               href="#"
-              className={`select-none mr-3 transform transition-all duration-300 ease-out ${mobileOpen && !isAnimating
+              className={`select-none transform transition-all duration-300 ease-out ${mobileOpen && !isAnimating
                 ? 'translate-x-0 opacity-100'
                 : isAnimating
                   ? '-translate-x-full opacity-0'

@@ -62,14 +62,14 @@ export default function DeveloperHeroSection() {
 
     return (
         <section id="home" className="w-full h-screen flex flex-col justify-center px-5 md:p-28 border-b-2">
-            <h2 className="text-xl md:text-3xl mb-2.5 md:mb-1">
+            <h2 className="text-xl md:text-3xl mb-1 md:mb-5">
                 Hey! It's <strong className="font-medium">Waleed Ashraf</strong>, {index === 0 ? "an" : "a"}
             </h2>
             <h1 className="text-6xl md:text-[100px] leading-18 font-bold md:font-normal 2xl:text-9xl font-['Orbit'] mb-6 md:mb-12">
                 {displayText}
                 <span className={`ml-1 inline-block w-2 ${cursorVisible ? "bg-[var(--black)]" : "bg-transparent"}`}>&nbsp;</span>
             </h1>
-            <p className="leading-7 md:leading-8  md:text-[20px] text-justify">
+            <p className="md:leading-8  md:text-[20px] text-justify">
                 I’m an <strong>AI/ML Engineer</strong>, <strong>Software Developer</strong>, and <strong>Workflow Automation Specialist</strong> with a focus on creating intelligent, data-driven solutions that help businesses work smarter. I combine expertise in&nbsp;machine learning, artificial intelligence, software development, and process automation&nbsp;to design systems that reduce manual effort, improve efficiency, and support innovation.
             </p>
             <p className="md:text-[20px] hidden md:block text-justify mt-4">

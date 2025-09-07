@@ -32,7 +32,7 @@ export default function Developer() {
     <main id="app" className="w-screen absolute bg-[url('/noise-filter.svg')] bg-fixed bg-cover bg-center -z-10 scroll-smooth">
       <ProfileSwitcher />
       <DeveloperHeroSection />
-      {/* <DeveloperAbout /> */}
+      <DeveloperAbout />
       {/* <DeveloperWhatIDo /> */}
       {/* <DeveloperSkills /> */}
       <Navbar />
