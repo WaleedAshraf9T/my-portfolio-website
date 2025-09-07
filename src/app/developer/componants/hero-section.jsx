@@ -61,33 +61,34 @@ export default function DeveloperHeroSection() {
     }
 
     return (
-        <section id="home" className="w-full h-screen flex flex-col justify-center px-28 border-b-2">
-            <h2 className="text-3xl">
+        <section id="home" className="w-full h-screen flex flex-col justify-center px-5 md:p-28 border-b-2">
+            <h2 className="text-xl md:text-3xl mb-2.5 md:mb-1">
                 Hey! It's <strong className="font-medium">Waleed Ashraf</strong>, {index === 0 ? "an" : "a"}
             </h2>
-            <h1 className="text-9xl font-['Orbit'] mb-12">
+            <h1 className="text-6xl md:text-[100px] leading-18 font-bold md:font-normal 2xl:text-9xl font-['Orbit'] mb-6 md:mb-12">
                 {displayText}
                 <span className={`ml-1 inline-block w-2 ${cursorVisible ? "bg-[var(--black)]" : "bg-transparent"}`}>&nbsp;</span>
             </h1>
-            <p className="text-[20px] text-justify">
+            <p className="leading-7 md:leading-8  md:text-[20px] text-justify">
                 I’m an <strong>AI/ML Engineer</strong>, <strong>Software Developer</strong>, and <strong>Workflow Automation Specialist</strong> with a focus on creating intelligent, data-driven solutions that help businesses work smarter. I combine expertise in&nbsp;machine learning, artificial intelligence, software development, and process automation&nbsp;to design systems that reduce manual effort, improve efficiency, and support innovation.
             </p>
-            <p className="text-[20px] text-justify mt-4">
+            <p className="md:text-[20px] hidden md:block text-justify mt-4">
                 Whether it’s building&nbsp;custom machine learning models, developing&nbsp;scalable software applications, or automating complex workflows, I deliver solutions that solve real challenges and create measurable impact.
             </p>
 
             <div className="w-full flex items-center justify-between mt-16">
-                <div className="flex flex-col">
-                    <p className="flex items-baseline text-3xl"><b className="text-6xl font-medium">80</b>+</p>
-                    <p className="text-[20px]">Successful Projects</p>
+                <div className="w-full flex flex-col">
+                    <p className="flex items-baseline text-3xl"><b className="text-4xl md:text-6xl font-medium">80</b>+</p>
+                    <p className="text-sm md:text-[20px]">Successful Projects</p>
                 </div>
 
-                <div className="flex gap-5">
-                    <a href="https://www.linkedin.com/in/waleedashraf9t/" target="_bl" className="flex items-center gap-2.5">
-                        <Image src={'/linkedin.svg'} width={30} height={0} alt="github" /> LinkedIn
+                <div className="flex flex-col md:flex-row items-end md:justify-end md:gap-5">
+                    <a href="https://www.linkedin.com/in/waleedashraf9t/" target="_bl" className="flex items-center gap-1 md:gap-2.5">
+                        <Image src={'/linkedin.svg'} className="w-[18%] md:w-[25%]" width={0} height={0} alt="github" /> LinkedIn
                     </a>
-                    <a href="#" className="flex items-center gap-2.5">
-                        <Image src={'/github.svg'} width={30} height={0} alt="github" /> Github
+                   
+                    <a href="#" className="hidden md:flex items-center gap-2.5">
+                        <Image src={'/github.svg'} className="w-[18%] md:w-[25%]" width={0} height={0} alt="github" /> Github
                     </a>
                 </div>
             </div>
