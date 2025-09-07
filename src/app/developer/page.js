@@ -33,7 +33,7 @@ export default function Developer() {
       <ProfileSwitcher />
       <DeveloperHeroSection />
       <DeveloperAbout />
-      {/* <DeveloperWhatIDo /> */}
+      <DeveloperWhatIDo />
       {/* <DeveloperSkills /> */}
       <Navbar />
     </main>
