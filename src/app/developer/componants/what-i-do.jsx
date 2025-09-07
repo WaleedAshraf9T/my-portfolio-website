@@ -43,7 +43,7 @@ export default function DeveloperWhatIDo() {
                 <div className="w-full h-auto bg-[var(--primary)] backdrop-blur-md border-1 border-[var(--black)] p-6 flex flex-col justify-between transition-all duration-500">
                     <div className="mb-5 md:mb-0">
                         <p className="text-xl mb-2 flex-grow text-justify">something new in the market?</p>
-                        <h2 className="text-2xl md:text-[28px] font-medium mb-5 md:mb-0 text-justify leading-8">Let me know, I really enjoy learning new things</h2>
+                        <h2 className="text-2xl md:text-3xl font-medium mb-5 md:mb-0 text-justify leading-8 md:leading-normal">Let me know, I really enjoy learning new things</h2>
                     </div>
 
                     <a href="#">

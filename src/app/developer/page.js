@@ -34,7 +34,7 @@ export default function Developer() {
       <DeveloperHeroSection />
       <DeveloperAbout />
       <DeveloperWhatIDo />
-      {/* <DeveloperSkills /> */}
+      <DeveloperSkills />
       <Navbar />
     </main>
   );
