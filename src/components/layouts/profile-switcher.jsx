@@ -1,18 +1,28 @@
 'use client'
-import { useState } from "react";
-import { useRouter } from 'next/navigation';
+import { useState, useEffect } from "react";
+import { useRouter, usePathname } from 'next/navigation';
 
 export default function ProfileSwitcher() {
     const profileRoutes = ["/developer", "/designer"];
     const router = useRouter();
+    const pathname = usePathname();
     const [active, setActive] = useState(0); // 0 = Development, 1 = Designer
 
+    // Sync active state with current pathname
+    useEffect(() => {
+        const currentIndex = profileRoutes.findIndex(route => pathname === route);
+        if (currentIndex !== -1) {
+            setActive(currentIndex);
+        }
+    }, [pathname]);
+
     const handleNavigation = (index) => {
+        setActive(index); // Update state immediately for better UX
         router.push(profileRoutes[index]);
     };
 
     const toggle = (index) => {
-        setActive(index);
+        handleNavigation(index); // Just call handleNavigation, no need for separate toggle
     };
 
     return (
@@ -28,7 +38,7 @@ export default function ProfileSwitcher() {
                 <div className="relative z-10 flex h-full">
                     <button
                         type="button"
-                        onClick={() => { toggle(0); handleNavigation(0); }}
+                        onClick={() => toggle(0)}
                         onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && toggle(0)}
                         aria-pressed={active === 0}
                         className={`w-1/2 h-full rounded-full flex items-center justify-center font-thin text-xl transition-colors duration-200 cursor-pointer ${active === 0 ? "text-[var(--primary)]" : "text-[var(--black)]"
@@ -39,7 +49,7 @@ export default function ProfileSwitcher() {
 
                     <button
                         type="button"
-                        onClick={() => { toggle(1); handleNavigation(1); }}
+                        onClick={() => toggle(1)}
                         onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && toggle(1)}
                         aria-pressed={active === 1}
                         className={`w-1/2 h-full rounded-full flex items-center justify-center font-thin text-xl transition-colors duration-200  cursor-pointer ${active === 1 ? "text-[var(--primary)]" : "text-[var(--black)]"

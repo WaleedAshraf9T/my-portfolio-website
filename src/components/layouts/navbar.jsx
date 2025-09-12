@@ -9,6 +9,7 @@ export default function Navbar() {
   const [isAnimating, setIsAnimating] = useState(false);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
 
   // Navigation items
   const navItems = [
@@ -19,6 +20,40 @@ export default function Navbar() {
     { link: "#", text: "Portfolio" },
     { link: "#", text: "Testimonials" },
   ];
+
+  // Function to check which section is currently active
+  const checkActiveSection = () => {
+    const sections = navItems.map(item => item.link.replace('#', ''));
+    let currentSection = '';
+
+    sections.forEach(sectionId => {
+      if (sectionId) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // Consider a section active if it's in the upper half of the viewport
+          if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+            currentSection = `#${sectionId}`;
+          }
+        }
+      }
+    });
+
+    setActiveSection(currentSection);
+  };
+
+  // Set up scroll event listener for active section detection
+  useEffect(() => {
+    // Initial check
+    checkActiveSection();
+    
+    // Add scroll event listener
+    window.addEventListener('scroll', checkActiveSection);
+    
+    return () => {
+      window.removeEventListener('scroll', checkActiveSection);
+    };
+  }, []);
 
   // Check scroll position and update arrow visibility
   const checkArrows = () => {
@@ -84,12 +119,23 @@ export default function Navbar() {
     }, 400);
   };
 
-  const handleNavClick = () => {
-    setIsAnimating(true);
-    setTimeout(() => {
-      setMobileOpen(false);
-      setIsAnimating(false);
-    }, 300);
+  const handleNavClick = (link) => {
+    // Update active section immediately on click
+    setActiveSection(link);
+    
+    // Close mobile menu if open
+    if (mobileOpen) {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setMobileOpen(false);
+        setIsAnimating(false);
+      }, 300);
+    }
+  };
+
+  // Helper function to determine if a nav item is active
+  const isActiveItem = (link) => {
+    return activeSection === link;
   };
 
   return (
@@ -137,14 +183,14 @@ export default function Navbar() {
             {showLeftArrow && (
               <button
                 onClick={scrollLeft}
-                className="scroll-arrow absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white/80 to-transparent backdrop-blur-sm rounded-l-full flex items-center justify-center z-10 hover:from-white/90 transition-all"
+                className="scroll-arrow absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r backdrop-blur-xs rounded-full flex items-center justify-center z-10 cursor-pointer"
               >
                 <Image
-                  src={"/arrow.svg"}
-                  width={20}
+                  src={"/navigation-arrow.svg"}
+                  width={10}
                   height={0}
                   alt="scroll left"
-                  className="rotate-90"
+                  className="rotate-180"
                 />
               </button>
             )}
@@ -152,8 +198,17 @@ export default function Navbar() {
             {/* Navigation Items Container */}
             <div ref={scrollRef} className="flex overflow-hidden rounded-full">
               {navItems.map((item, index) => (
-                <a href={item.link} key={index} className="flex-shrink-0 select-none mr-3">
-                  <div className="group h-22 w-max bg-[var(--primary)]/5 hover:bg-[var(--black)] transition-all rounded-full flex items-center justify-center text-2xl text-[var(--black)] hover:text-[var(--primary)] px-8 border-1 border-black/10 backdrop-blur-md">
+                <a 
+                  href={item.link} 
+                  key={index} 
+                  className="flex-shrink-0 select-none mr-3"
+                  onClick={() => handleNavClick(item.link)}
+                >
+                  <div className={`group h-22 w-max transition-all rounded-full flex items-center justify-center text-2xl px-8 border-1 border-black/10 backdrop-blur-md ${
+                    isActiveItem(item.link) 
+                      ? 'bg-[var(--black)] text-[var(--primary)]' 
+                      : 'bg-[var(--primary)]/5 hover:bg-[var(--black)] text-[var(--black)] hover:text-[var(--primary)]'
+                  }`}>
                     {item.text}
                   </div>
                 </a>
@@ -164,14 +219,14 @@ export default function Navbar() {
             {showRightArrow && (
               <button
                 onClick={scrollRight}
-                className="scroll-arrow absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white/80 to-transparent rounded-r-full flex items-center justify-center z-10 hover:from-white/90 transition-all"
+                className="scroll-arrow absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l backdrop-blur-xs rounded-full flex items-center justify-center z-10 cursor-pointer"
               >
                 <Image
                   src={"/navigation-arrow.svg"}
-                  width={15}
+                  width={10}
                   height={0}
                   alt="scroll right"
-                />
+                /> 
               </button>
             )}
           </div>
@@ -230,9 +285,13 @@ export default function Navbar() {
                       ? `${(navItems.length - 1 - index) * 50}ms`
                       : '0ms'
                 }}
-                onClick={handleNavClick}
+                onClick={() => handleNavClick(item.link)}
               >
-                <div className="w-full h-24 bg-[var(--black)] rounded-full flex items-center justify-center text-3xl text-[var(--primary)]">
+                <div className={`w-full h-24 rounded-full flex items-center justify-center text-3xl ${
+                  isActiveItem(item.link)
+                    ? 'bg-[var(--primary)] text-[var(--black)] border-1 border-black'
+                    : 'bg-[var(--black)] text-[var(--primary)]'
+                }`}>
                   {item.text.toUpperCase()}
                 </div>
               </a>
@@ -246,7 +305,7 @@ export default function Navbar() {
                   ? '-translate-x-full opacity-0'
                   : 'translate-x-full opacity-0'
                 }`}
-              onClick={handleNavClick}
+              onClick={() => handleNavClick('#')}
             >
               <div className="w-full h-24 bg-[var(--primary)] border-1 border-black rounded-full flex items-center justify-center text-3xl text-[var(--black)]">
                 Let's Talk
